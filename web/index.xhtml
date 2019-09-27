@@ -1,0 +1,98 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <h:head>
+        <title>Keyvan Derakhshan Nik Degree Project</title>  
+        <style>.Keyvan{
+                background-image: url("resources/Images/1.jpg");
+                 background-color: gray; 
+            }.pubkey{
+                background-color: green;
+                font-weight: bold;
+                font-style: italic;
+                font-size: large;
+                color: yellow;
+            }.prikey{
+                background-color: red;
+                font-weight: bold;
+                font-style: italic;
+                font-size: large;
+                color: yellow;
+            }
+        </style>
+   
+    </h:head>
+    <h:body styleClass="Keyvan">   
+       
+        <h:form>
+            <h:graphicImage value="/resources/Images/MunLogo.jpg" width="200" height="50"></h:graphicImage>
+            
+            <br/><br/>
+            <h:outputLabel styleClass="pubkey" value="   N:  "/> <h:inputText value="#{utilities.n}"/>
+            <h:outputLabel styleClass="pubkey" value="   d:  "/> <h:inputText value="#{utilities.d}"/>
+            <h:outputLabel styleClass="pubkey" value="   p:  "/> <h:inputText value="#{utilities.p}"/><br/><br/>
+            
+            <h:outputLabel value="  z : #{utilities.z}"/>
+            <br/><br/>
+            <table>
+                <tr>
+                    
+                </tr>
+                <tr>
+                    <td><h:outputLabel styleClass="prikey" value="f :   #{utilities.f}"/><br/><h:outputLabel value="  f inverse in q  :  #{utilities.f_inv_q}"/><br/><h:outputLabel value="  f inverse in q1  :  #{utilities.f_inv_q1}"/><br/> <h:outputLabel styleClass="prikey" value="  f inverse in p : #{utilities.f_inv_p}"/></td>
+                    <td><h:outputLabel value="g :   #{utilities.g}"/><br/><br/><h:outputLabel value="  g inverse in q1  :  #{utilities.g_inv_q1}"/><br/><br/></td>
+                </tr>
+              
+                <tr>
+                    <td></td>
+                    <td></td>
+                </tr>
+            </table>
+           
+            <h:outputLabel value="Plain text:"/> <h:inputText value="#{utilities.plain}"/><br/><br/>
+            <h:outputLabel value="Polynomial plain text: #{utilities.m}"/><br/><br/>
+            <table>
+                <tr>
+                    <td><h:graphicImage value="/resources/Images/ntrulogo.jpg" width="200" height="50"></h:graphicImage></td>                   
+                    <td><h:graphicImage value="/resources/Images/ntrulogo.jpg" width="200" height="50"></h:graphicImage></td>
+                </tr>
+                <tr>
+                    <td><h:outputLabel styleClass="pubkey" value="   q:  "/> <h:inputText value="#{utilities.q}"/><br/></td>
+                    <td><h:outputLabel styleClass="pubkey" value="   q1:  "/> <h:inputText value="#{utilities.q1}"/><br/><h:outputLabel value="  p inverse in q1  :  #{utilities.p_inv_q1}"/><br/><h:outputLabel styleClass="pubkey" value="   q2:  "/> <h:inputText value="#{utilities.q2}"/></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td><h:outputLabel styleClass="prikey" value="  G  :  #{utilities.dg}"/></td>
+                </tr>
+                <tr>
+                    
+                </tr>
+                
+                <tr>
+                    <td><h:outputLabel styleClass="pubkey" value="h : #{utilities.h}"/><br/></td>
+                    <td><h:outputLabel styleClass="pubkey" value="h1 : #{utilities.h1}"/><br/><h:outputLabel styleClass="pubkey" value="h2 : #{utilities.h2}"/></td>
+                </tr>
+                <tr>
+                    <td><h:outputLabel value="r : #{utilities.r}"/><br/></td>
+                    <td><h:outputLabel value="r1 : #{utilities.r1}"/><br/><h:outputLabel value="r2 : #{utilities.r2}"/></td>
+                </tr>
+                <tr>
+                    <td><h:outputLabel value="NTRU Encryption Polynomial: #{utilities.NTRU_EN}"/><br/><h:outputLabel value="NTRU Encryption text: #{utilities.encryptedNTRU}"/></td>
+                    <td><h:outputLabel value="D-NTRU Encryption Polynomial c1: #{utilities.DNTRU_EN1}"/><br/><h:outputLabel value="D-NTRU Encryption Polynomial c2: #{utilities.DNTRU_EN2}"/><br/><h:outputLabel value="D-NTRU Encryption text c2: #{utilities.encryptedDNTRU}"/></td>
+                </tr>
+                <tr>
+                    <td><h:outputLabel value="NTRU Decryption Polynomial: #{utilities.NTRU_DE}"/><br/><h:outputLabel value="NTRU Decryption text: #{utilities.decryptedNTRU}"/></td>
+                    <td><h:outputLabel value=" R1 D-NTRU Decryption in q1: #{utilities.newr1}"/><br/><h:outputLabel value="R2 D-NTRU Decryption in p: #{utilities.newr2}"/><br/><h:outputLabel value="D-NTRU Decryption Polynomial: #{utilities.DNTRU_DE}"/><br/><h:outputLabel value="D-NTRU Decryption text: #{utilities.decryptedDNTRU}"/></td>
+                </tr>
+            </table>
+            
+            <br/><br/>
+            <h:outputLabel value="Message : #{utilities.message}"/><br/><br/>
+            
+            <h:commandButton value="Calculate" action="#{utilities.check()}"/>
+            <h:commandButton value="Generate New Keys" action="#{utilities.keyGenerate()}"/>
+        </h:form>
+    </h:body>
+</html>
+
